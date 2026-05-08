@@ -2,339 +2,304 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>MISS ALIYA ✦ MASTER DASHBOARD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISS ALIYA ✦ LEGEND DASH</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
         }
 
         body {
-            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e1b4b 100%);
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            padding: 20px;
             min-height: 100vh;
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
+            font-family: 'Courier New', 'Fira Code', monospace;
+            padding: 30px 20px;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #f472b6;
-            border-radius: 10px;
+        /* matrix rain effect background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(0deg, rgba(0,255,0,0.03) 0px, rgba(0,255,0,0.03) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* main container */
-        .dashboard {
-            max-width: 1400px;
+        .container {
+            max-width: 1300px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
-        /* MISS ALIYA HEADER (unique style) */
-        .hero {
+        /* MISS ALIYA LEGEND HEADER */
+        .legend-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
-        .hero h1 {
-            font-size: 4rem;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 30px rgba(255,105,180,0.4);
-            letter-spacing: 2px;
+        .glitch {
+            font-size: 5rem;
             font-weight: 800;
+            text-transform: uppercase;
+            color: #f0f;
+            text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75);
+            animation: glitch 0.8s infinite;
+            letter-spacing: 5px;
+            font-family: 'Courier New', monospace;
         }
-        .hero p {
-            color: #cbd5e1;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            border-bottom: 2px dashed rgba(244,114,182,0.5);
-            display: inline-block;
-            padding-bottom: 8px;
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75); }
+            25% { text-shadow: -0.05em 0.025em 0 rgba(255,0,0,0.75), 0.025em 0.05em 0 rgba(0,255,0,0.75); }
+            50% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75), 0.05em 0 0 rgba(0,255,0,0.75); }
+            75% { text-shadow: -0.025em 0 0 rgba(255,0,0,0.75), 0.025em 0.025em 0 rgba(0,255,0,0.75); }
+            100% { text-shadow: 0.05em 0.05em 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75); }
         }
-        .glow-badge {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
+        .sub {
+            color: #3aff8e;
+            font-size: 0.9rem;
+            border: 1px solid #3aff8e80;
             display: inline-block;
-            padding: 8px 24px;
-            border-radius: 60px;
-            font-size: 0.8rem;
-            color: #f9a8d4;
-            margin-bottom: 20px;
-            border: 1px solid rgba(244,114,182,0.3);
+            padding: 5px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+            letter-spacing: 2px;
+            margin-top: 15px;
+            background: rgba(0,0,0,0.5);
         }
 
-        /* section cards */
-        .section {
-            background: rgba(15, 23, 42, 0.5);
+        /* cards grid */
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+
+        /* actual card style - no link text, just click */
+        .epic-card {
+            background: rgba(10, 20, 30, 0.55);
             backdrop-filter: blur(12px);
-            border-radius: 48px;
-            padding: 28px 24px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.3);
+            border-radius: 28px;
+            padding: 30px 18px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
         }
-        .section:hover {
-            border-color: rgba(244,114,182,0.4);
-            box-shadow: 0 25px 40px -12px rgba(244,114,182,0.2);
+        .epic-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .epic-card:hover::before {
+            left: 100%;
+        }
+        .epic-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: #ff44cc;
+            box-shadow: 0 0 25px rgba(255,68,204,0.4);
         }
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(120deg, #fbcfe8, #e9d5ff);
+        /* numbering style */
+        .card-number {
+            font-size: 3rem;
+            font-weight: bold;
+            font-family: monospace;
+            background: linear-gradient(135deg, #ff3388, #00ffcc);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            border-left: 5px solid #f472b6;
-            padding-left: 20px;
         }
-        .section-title span {
-            font-size: 2rem;
+        .card-name {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin: 12px 0;
+            color: #fff6d5;
+            text-shadow: 0 0 5px #ff3366;
+            letter-spacing: 1.5px;
         }
-
-        /* grid for links */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 22px;
-        }
-
-        /* stylish card per link */
-        .link-card {
-            background: rgba(0,0,0,0.4);
-            border-radius: 28px;
-            padding: 18px 20px;
-            transition: 0.2s;
-            border: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            backdrop-filter: blur(4px);
-        }
-        .link-card:hover {
-            background: rgba(244,114,182,0.1);
-            border-color: #f472b6;
-            transform: translateY(-3px);
-        }
-        .link-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .link-number {
-            background: #f472b6;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #0f172a;
-            box-shadow: 0 0 8px #f472b6;
-        }
-        .link-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #f1f5f9;
-        }
-        .link-url {
+        .card-desc {
             font-size: 0.7rem;
-            color: #94a3b8;
-            word-break: break-all;
-            max-width: 180px;
+            color: #9effcf;
+            font-family: monospace;
+            text-transform: uppercase;
+            border-top: 1px dashed #3aff8e;
+            padding-top: 12px;
+            display: inline-block;
         }
-        .visit-btn {
-            background: linear-gradient(95deg, #f472b6, #c084fc);
-            border: none;
-            padding: 8px 22px;
-            border-radius: 40px;
-            color: white;
+        .click-tip {
+            font-size: 0.65rem;
+            margin-top: 14px;
+            color: #aaaaff;
             font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-            font-size: 0.85rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .visit-btn:hover {
-            transform: scale(1.02);
-            background: linear-gradient(95deg, #f43f5e, #e879f9);
-            box-shadow: 0 0 12px #f472b6;
+            opacity: 0.7;
         }
 
-        /* footer */
-        .footer {
+        /* diff styles for diff sections to give unique look */
+        .card-cookies { background: linear-gradient(145deg, #0f172acc, #020617cc); }
+        .card-messenger { background: linear-gradient(145deg, #1e1b4bcc, #020617cc); border-color: #a855f7; }
+        .card-insta { background: linear-gradient(145deg, #2e1a3ecc, #000000cc); border-color: #e94e77; }
+        .card-token { background: linear-gradient(145deg, #173f2ecc, #021c12cc); border-color: #2dd4bf; }
+        .card-cover { background: linear-gradient(145deg, #3b2a1fcc, #1a0f07cc); border-color: #f59e0b; }
+        .card-apk { background: linear-gradient(145deg, #1f1e3ccc, #05040fcc); border-color: #c026d3; }
+        .card-tools { background: linear-gradient(145deg, #0f172acc, #010514cc); border-color: #f97316; }
+
+        footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 25px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #7e8ba3;
-            font-size: 0.85rem;
+            margin-top: 60px;
+            color: #5f6c84;
+            font-size: 0.75rem;
+            border-top: 1px solid #2d3a5e;
+            padding-top: 25px;
+            font-family: monospace;
         }
 
-        @media (max-width: 700px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 1.4rem; }
-            .link-card { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .visit-btn { align-self: flex-end; }
+        @media (max-width: 680px) {
+            .glitch { font-size: 2.5rem; }
+            .card-name { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-<div class="dashboard">
+<div class="container">
     
-    <!-- MISS ALIYA MAIN BANNER + UNIQUE STYLE -->
-    <div class="hero">
-        <div class="glow-badge">✦  M I S S   A L I Y A  ✦</div>
-        <h1>⚜️ MISS ALIYA ⚜️</h1>
-        <p>✦  MASTER CONTROL  ✦  PREMIUM DASH  ✦</p>
+    <div class="legend-header">
+        <div class="glitch">⚡ MISS ALIYA ⚡</div>
+        <div class="sub">✧ LEGENDARY TERMINAL ACCESS ✧</div>
     </div>
 
-    <!-- 1️⃣ COOKIS CONVO (4 links) section -->
-    <div class="section">
-        <div class="section-title">
-            <span>🍪</span> COOKIS CONVO · 4 REALMS
+    <div class="dash-grid">
+        <!-- 1️⃣ COOKIS CONVO (4 links -> 4 different cards? but you said ek card click se direct open, So I combine each sublink? Actually you said "cokis vale pe click kre to bdiya sa naam aaye c9kic c9nvo 1" 
+        means ONE card for each? but you have 4 cookis links. To mai 4 alag cards banata hu under cookies section? No — i think 1 card per full service? But your previous request: "sab alag alag naam se 1 2 3 4" means 4 diff cards for 4 cookis links. Perfect -->
+        <!-- COOKIES CONVO : 4 cards (each unique name C9KIC C9NVO I, II, III, IV) directly link open -->
+        <div class="epic-card card-cookies" data-url="https://cookis-convo-aliya.onrender.com/">
+            <div class="card-number">#C9K1</div>
+            <div class="card-name">C9KIC C9NVO ①</div>
+            <div class="card-desc">✦ ALPHA SESSION ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
         </div>
-        <div class="links-grid" id="cookiesConvoGrid"></div>
-    </div>
-
-    <!-- 2️⃣ MESSENGER CHAT BOT -->
-    <div class="section">
-        <div class="section-title">
-            <span>💬</span> MESSENGER CHAT BOT
+        <div class="epic-card card-cookies" data-url="https://cookies-convo-3.onrender.com/">
+            <div class="card-number">#C9K2</div>
+            <div class="card-name">C9KIC C9NVO ②</div>
+            <div class="card-desc">✦ PHANTOM NODE ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
         </div>
-        <div class="links-grid" id="messengerGrid"></div>
-    </div>
-
-    <!-- 3️⃣ INSTA SERVER (3 servers) -->
-    <div class="section">
-        <div class="section-title">
-            <span>📸</span> INSTA SERVER · POWER NODE
+        <div class="epic-card card-cookies" data-url="https://cookies-convo-4.onrender.com/">
+            <div class="card-number">#C9K3</div>
+            <div class="card-name">C9KIC C9NVO ③</div>
+            <div class="card-desc">✦ SHADOW REALM ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
         </div>
-        <div class="links-grid" id="instaServerGrid"></div>
-    </div>
-
-    <!-- 4️⃣ TOKEN SERVER (2 servers) -->
-    <div class="section">
-        <div class="section-title">
-            <span>🔑</span> TOKEN SERVER · AUTH GATEWAY
+        <div class="epic-card card-cookies" data-url="https://cokkis-convo-5.onrender.com/">
+            <div class="card-number">#C9K4</div>
+            <div class="card-name">C9KIC C9NVO ④</div>
+            <div class="card-desc">✦ FINAL VERSE ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
         </div>
-        <div class="links-grid" id="tokenServerGrid"></div>
-    </div>
 
-    <!-- 5️⃣ COVER DP -->
-    <div class="section">
-        <div class="section-title">
-            <span>🖼️</span> COVER DP STUDIO
+        <!-- 2️⃣ MESSENGER CHAT BOT -->
+        <div class="epic-card card-messenger" data-url="https://mltibot-2.onrender.com">
+            <div class="card-number">#MB01</div>
+            <div class="card-name">MΛSSΞNGΞR CHΛT BOT</div>
+            <div class="card-desc">✦ A.I. HYBRID CORE ✦</div>
+            <div class="click-tip">[ CLICK TO ACTIVATE ]</div>
         </div>
-        <div class="links-grid" id="coverDpGrid"></div>
-    </div>
 
-    <!-- 6️⃣ APK HUB -->
-    <div class="section">
-        <div class="section-title">
-            <span>📦</span> PREMIUM APK VAULT
+        <!-- 3️⃣ INSTA SERVER : 3 links 3 cards -->
+        <div class="epic-card card-insta" data-url="https://insta-server2-duc5.onrender.com">
+            <div class="card-number">#INS1</div>
+            <div class="card-name">INSTA SERVER I</div>
+            <div class="card-desc">✦ PRIVATE NODE ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
         </div>
-        <div class="links-grid" id="apkGrid"></div>
-    </div>
-
-    <!-- 7️⃣ ALL TOOLS - RDX TOOLKIT -->
-    <div class="section">
-        <div class="section-title">
-            <span>🛠️</span> RDX TOOLKIT · ALL IN ONE
+        <div class="epic-card card-insta" data-url="https://insta-inbox.onrender.com">
+            <div class="card-number">#INS2</div>
+            <div class="card-name">INSTA INBOX</div>
+            <div class="card-desc">✦ DARK PANEL ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
         </div>
-        <div class="links-grid" id="toolsGrid"></div>
+        <div class="epic-card card-insta" data-url="https://offline-instapost-server-0mi3.onrender.com/">
+            <div class="card-number">#INS3</div>
+            <div class="card-name">OFFLINE INSTAPOST</div>
+            <div class="card-desc">✦ GHOST SERVER ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
+        </div>
+
+        <!-- 4️⃣ TOKEN SERVER 2 links -->
+        <div class="epic-card card-token" data-url="https://convo-token-server-5.onrender.com/">
+            <div class="card-number">#TKN1</div>
+            <div class="card-name">T0KΞN SΞRVΞR V</div>
+            <div class="card-desc">✦ AUTH GATE ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
+        </div>
+        <div class="epic-card card-token" data-url="https://convo-3-mfud.onrender.com/">
+            <div class="card-number">#TKN2</div>
+            <div class="card-name">C0NV0 T0KΞN |||</div>
+            <div class="card-desc">✦ ENCRYPTED ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
+        </div>
+
+        <!-- 5️⃣ COVER DP -->
+        <div class="epic-card card-cover" data-url="https://coverdp-2.onrender.com/">
+            <div class="card-number">#CDP1</div>
+            <div class="card-name">C0VΞR DP STUDIO</div>
+            <div class="card-desc">✦ ART ENGINE ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
+        </div>
+
+        <!-- 6️⃣ APK VAULT -->
+        <div class="epic-card card-apk" data-url="https://apk-k18z.onrender.com/">
+            <div class="card-number">#APKX</div>
+            <div class="card-name">PRΞMIUM APK VAULT</div>
+            <div class="card-desc">✦ TOOLS / MODS ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
+        </div>
+
+        <!-- 7️⃣ ALL TOOLS RDX -->
+        <div class="epic-card card-tools" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders">
+            <div class="card-number">#RDX0</div>
+            <div class="card-name">RDX T00LKIT</div>
+            <div class="card-desc">✦ ALL TOOLS ✦</div>
+            <div class="click-tip">[ CLICK TO ENTER ]</div>
+        </div>
     </div>
 
-    <div class="footer">
-        ⚜️ MISS ALIYA ⚜️ · SECURE DASHBOARD · ALL SERVICES ACTIVE ⚡
-    </div>
+    <footer>
+        ⚜️ MISS ALIYA ⚜️ :: TERMINAL ACCESS GRANTED :: CLICK ANY CARD TO PROCEED DIRECTLY ⚡
+    </footer>
 </div>
 
 <script>
-    // ---------- DATA : LINKS AS PER YOUR REQUIREMENT --------------
-    const cookiesConvo = [
-        { name: "Cookies Convo ①", url: "https://cookis-convo-aliya.onrender.com/" },
-        { name: "Cookies Convo ②", url: "https://cookies-convo-3.onrender.com/" },
-        { name: "Cookies Convo ③", url: "https://cookies-convo-4.onrender.com/" },
-        { name: "Cookies Convo ④", url: "https://cokkis-convo-5.onrender.com/" }
-    ];
-
-    const messengerBot = [
-        { name: "MLTIBOT · MASSENGER AI", url: "https://mltibot-2.onrender.com" }
-    ];
-
-    const instaServers = [
-        { name: "Insta Server I", url: "https://insta-server2-duc5.onrender.com" },
-        { name: "Insta Inbox Manager", url: "https://insta-inbox.onrender.com" },
-        { name: "Offline Instapost", url: "https://offline-instapost-server-0mi3.onrender.com/" }
-    ];
-
-    const tokenServers = [
-        { name: "Token Server Alpha", url: "https://convo-token-server-5.onrender.com/" },
-        { name: "Token Server Omega", url: "https://convo-3-mfud.onrender.com/" }
-    ];
-
-    const coverDp = [
-        { name: "Cover DP Creator", url: "https://coverdp-2.onrender.com/" }
-    ];
-
-    const apkTools = [
-        { name: "Premium APK Hub", url: "https://apk-k18z.onrender.com/" }
-    ];
-
-    const allTools = [
-        { name: "RDX TOOLSKIT (All Tools)", url: "https://rdx-toolskit-org-3.onrender.com/#downloaders" }
-    ];
-
-    // helper to render grid
-    function renderGrid(containerId, items) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = "";
-        items.forEach((item, idx) => {
-            const card = document.createElement("div");
-            card.className = "link-card";
-            card.innerHTML = `
-                <div class="link-info">
-                    <div class="link-number">${idx+1}</div>
-                    <div>
-                        <div class="link-name">${item.name}</div>
-                        <div class="link-url">${item.url.length > 40 ? item.url.slice(0,40)+'…' : item.url}</div>
-                    </div>
-                </div>
-                <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="visit-btn">VISIT →</a>
-            `;
-            container.appendChild(card);
+    // all cards click => direct open link without showing any text
+    const allCards = document.querySelectorAll('.epic-card');
+    allCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            const targetUrl = card.getAttribute('data-url');
+            if(targetUrl) {
+                window.open(targetUrl, '_blank');   // opens in new tab
+            } else {
+                console.warn("no url defined");
+            }
         });
-    }
-
-    // render all sections
-    renderGrid("cookiesConvoGrid", cookiesConvo);
-    renderGrid("messengerGrid", messengerBot);
-    renderGrid("instaServerGrid", instaServers);
-    renderGrid("tokenServerGrid", tokenServers);
-    renderGrid("coverDpGrid", coverDp);
-    renderGrid("apkGrid", apkTools);
-    renderGrid("toolsGrid", allTools);
+    });
 </script>
 </body>
 </html>
