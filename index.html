@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MISS ALIYA ✦ LEGEND</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>MISS ALIYA ✦ LEGENDARY DASHBOARD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
         }
 
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
-            font-family: 'Courier New', 'Fira Code', monospace;
+            background: radial-gradient(ellipse at 30% 40%, #0a0c1a, #010105);
+            font-family: 'Poppins', 'Orbitron', monospace;
+            padding: 20px;
+            position: relative;
             overflow-x: hidden;
         }
 
-        /* matrix effect */
+        /* animated gradient background */
         body::before {
             content: "";
             position: fixed;
@@ -26,267 +30,466 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: repeating-linear-gradient(0deg, rgba(0,255,0,0.03) 0px, rgba(0,255,0,0.03) 2px, transparent 2px, transparent 8px);
+            background: repeating-linear-gradient(45deg, rgba(255,0,150,0.03) 0px, rgba(255,0,150,0.03) 2px, transparent 2px, transparent 10px),
+                        repeating-linear-gradient(135deg, rgba(0,255,200,0.03) 0px, rgba(0,255,200,0.03) 2px, transparent 2px, transparent 12px);
             pointer-events: none;
+            z-index: 0;
+            animation: shiftBg 20s linear infinite;
+        }
+        @keyframes shiftBg {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 100px 100px, -100px 80px; }
         }
 
-        /* ===== SPLASH SCREEN (pehle wala simple) ===== */
-        .splash {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ========= SPLASH SCREEN (WELCOME PAGE) ========= */
+        .splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
+            background: radial-gradient(ellipse at 30% 40%, #0a0c1a, #010105);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .splash.hide {
+        .splash-screen.hide {
             opacity: 0;
             visibility: hidden;
-            transform: scale(0.95);
+            transform: scale(0.96);
         }
         .splash-inner {
             text-align: center;
-            max-width: 450px;
+            max-width: 480px;
             padding: 20px;
         }
         .splash-inner img {
             width: 100%;
-            border-radius: 30px;
-            box-shadow: 0 0 30px rgba(255,0,150,0.3);
-            border: 2px solid rgba(255,100,200,0.5);
+            border-radius: 50px;
+            box-shadow: 0 0 40px rgba(255,0,150,0.4);
+            border: 2px solid rgba(255,100,200,0.6);
         }
-        .miss-name {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #ff99cc, #ff66aa, #ff3388);
+        .splash-name {
+            font-size: 3.2rem;
+            font-weight: 900;
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #FFD1FF, #C084FC);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin: 20px 0 10px;
-            font-family: 'Courier New', monospace;
+            animation: gradientFlow 3s ease infinite;
+            margin: 25px 0 15px;
+            letter-spacing: 3px;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .welcome-btn {
             background: linear-gradient(95deg, #ff3388, #ffcc33);
             border: none;
-            padding: 12px 35px;
-            border-radius: 40px;
-            font-size: 1.3rem;
+            padding: 14px 45px;
+            border-radius: 50px;
+            font-size: 1.4rem;
             font-weight: bold;
-            font-family: monospace;
+            font-family: 'Orbitron';
+            color: #0a0c1a;
             cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 0 15px #ff66aa;
+            transition: 0.2s;
+            box-shadow: 0 0 20px #ff66aa;
+            letter-spacing: 2px;
+            margin-top: 10px;
         }
-        .press-this {
-            margin-top: 15px;
-            color: #0f0;
+        .welcome-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 35px #ff44cc;
+        }
+        .press-text {
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: #92ffd0;
             font-family: monospace;
-            animation: blink 1s infinite;
+            animation: blinkSoft 1.2s infinite;
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 6px 22px;
+            border-radius: 30px;
         }
-        @keyframes blink {
-            0%,100% { opacity: 0.6; }
-            50% { opacity: 1; text-shadow: 0 0 5px #0f0; }
+        @keyframes blinkSoft {
+            0%,100% { opacity: 0.7; letter-spacing: 1px; }
+            50% { opacity: 1; letter-spacing: 3px; text-shadow: 0 0 5px cyan; }
         }
 
-        /* ===== DASHBOARD (PEHLE WALE JAISA EXACT) ===== */
+        /* ========= MAIN DASHBOARD (HIDDEN INITIALLY) ========= */
         .dashboard {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 30px 20px;
             opacity: 0;
-            transition: 0.5s ease;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.2s;
             pointer-events: none;
         }
         .dashboard.show {
             opacity: 1;
+            transform: translateY(0);
             pointer-events: auto;
         }
 
-        /* header */
-        .header {
+        /* MISS ALIYA HEADER */
+        .hero {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            padding: 20px;
         }
-        .glitch {
-            font-size: 4rem;
-            font-weight: 800;
-            color: #f0f;
-            text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75);
-            animation: glitch 0.8s infinite;
-            font-family: 'Courier New', monospace;
+        .fancy-name {
+            font-size: 5.2rem;
+            font-weight: 900;
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #FFD1FF, #C084FC);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientFlowDash 4s ease infinite;
+            text-shadow: 0 0 20px rgba(255,105,180,0.5);
+            letter-spacing: 4px;
         }
-        @keyframes glitch {
-            0% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75); }
-            50% { text-shadow: -0.05em 0.025em 0 rgba(255,0,0,0.75), 0.025em 0.05em 0 rgba(0,255,0,0.75); }
-            100% { text-shadow: 0.05em 0.05em 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75); }
+        @keyframes gradientFlowDash {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .sub {
-            color: #3aff8e;
-            font-size: 0.8rem;
-            border: 1px solid #3aff8e80;
+        .glow-line {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0066, #ffcc00, #ff0066);
+            margin: 20px auto;
+            border-radius: 10px;
+            animation: pulseWidth 2s infinite;
+        }
+        @keyframes pulseWidth {
+            0%,100% { width: 120px; opacity: 0.6; }
+            50% { width: 200px; opacity: 1; }
+        }
+        .sub-tag {
+            color: #b0ffe0;
+            font-family: monospace;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            background: rgba(0,0,0,0.6);
             display: inline-block;
-            padding: 5px 20px;
-            border-radius: 30px;
+            padding: 6px 24px;
+            border-radius: 60px;
+            border: 1px solid #ff66c0;
+            backdrop-filter: blur(8px);
         }
 
-        /* cards grid */
-        .grid {
+        /* CARDS GRID */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 30px;
             margin: 40px 0;
         }
 
-        /* card style - pehle wala */
-        .card {
-            background: rgba(10, 20, 30, 0.55);
-            backdrop-filter: blur(12px);
-            border-radius: 28px;
-            padding: 25px 18px;
+        .legend-card {
+            background: rgba(8, 12, 28, 0.65);
+            backdrop-filter: blur(14px);
+            border-radius: 36px;
+            padding: 28px 20px 20px 20px;
             text-align: center;
             cursor: pointer;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            transition: 0.25s;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255,255,200,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #ff44cc;
-            box-shadow: 0 0 25px rgba(255,68,204,0.4);
+        .legend-card::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: 0.5s;
+            pointer-events: none;
         }
+        .legend-card:hover::after {
+            opacity: 1;
+        }
+        .legend-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #ff66c4;
+            box-shadow: 0 0 30px rgba(255,102,196,0.5);
+        }
+
+        .card-cookie { border-top: 3px solid #ff9966; }
+        .card-messenger { border-top: 3px solid #c084fc; }
+        .card-insta { border-top: 3px solid #ff4d6d; }
+        .card-token { border-top: 3px solid #2dd4bf; }
+        .card-cover { border-top: 3px solid #fbbf24; }
+        .card-apk { border-top: 3px solid #e879f9; }
+        .card-tools { border-top: 3px solid #fb923c; }
+
         .card-num {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #ff3388, #00ffcc);
+            font-size: 2rem;
+            font-weight: 900;
+            font-family: 'Orbitron';
+            background: linear-gradient(120deg, #f0f, #ffcc33);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .card-name {
-            font-size: 1.4rem;
+        .card-title {
+            font-size: 1.65rem;
             font-weight: 800;
-            margin: 10px 0;
-            color: #fff6d5;
+            margin: 12px 0 8px;
+            color: #fff3e6;
+            text-shadow: 0 0 5px #ff44aa;
+            letter-spacing: 1px;
         }
-        .made {
-            margin-top: 15px;
+        .card-desc {
+            font-size: 0.7rem;
+            color: #a3e4ff;
+            font-family: monospace;
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 4px 15px;
+            border-radius: 20px;
+        }
+        .made-by {
+            margin-top: 20px;
             font-size: 0.7rem;
             color: #ffaaee;
+            font-family: monospace;
             border-top: 1px dashed rgba(255,100,200,0.4);
-            padding-top: 10px;
+            padding-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
-        .made span {
-            color: #ff66aa;
+        .made-by span {
             font-weight: bold;
+            background: linear-gradient(45deg, #ff99cc, #ff66aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 0.8rem;
+        }
+        .click-sign {
+            font-size: 0.6rem;
+            margin-top: 10px;
+            opacity: 0.6;
+            color: cyan;
         }
 
-        /* footer */
-        .footer {
+        .convo-footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 25px;
+            margin: 60px 0 30px;
+            padding: 30px 20px;
             background: rgba(0,0,0,0.4);
-            border-radius: 40px;
+            border-radius: 70px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,100,200,0.3);
         }
-        .end {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #ffdd99;
+        .end-line {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Orbitron';
+            background: linear-gradient(135deg, #f5f0ff, #ffb3e6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
         }
         .soon {
-            font-size: 0.9rem;
-            margin-top: 8px;
-            color: #88ffdd;
-            animation: pulse 1s infinite;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            color: #ffcc88;
+            font-family: monospace;
+            animation: blink 1.5s infinite;
         }
-        @keyframes pulse {
-            0%,100% { opacity: 0.7; }
-            50% { opacity: 1; }
+        @keyframes blink {
+            0%,100% { opacity: 1; text-shadow: 0 0 2px #ffaa44; }
+            50% { opacity: 0.7; text-shadow: 0 0 12px #ff66cc; }
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #6c7a9e;
+            font-size: 0.7rem;
         }
 
-        @media (max-width: 600px) {
-            .glitch { font-size: 2rem; }
-            .card-name { font-size: 1rem; }
+        @media (max-width: 700px) {
+            .fancy-name { font-size: 2.3rem; letter-spacing: 2px; }
+            .splash-name { font-size: 2rem; }
+            .card-title { font-size: 1.2rem; }
+            .end-line { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
-<div class="splash" id="splash">
+<!-- SPLASH SCREEN (WELCOME) -->
+<div class="splash-screen" id="splashScreen">
     <div class="splash-inner">
         <img src="https://i.ibb.co/938v5npv/fba428b57ab944eaa0014d96b3da238d-1.jpg" alt="MISS ALIYA">
-        <div class="miss-name">⚜️ MISS ALIYA ⚜️</div>
+        <div class="splash-name">⚜️ MISS ALIYA ⚜️</div>
         <button class="welcome-btn" id="welcomeBtn">WELCOME</button>
-        <div class="press-this">⟡ PRESS THIS ⟡</div>
+        <div class="press-text">⟡ PRESS THIS ⟡</div>
     </div>
 </div>
 
-<!-- DASHBOARD -->
-<div class="dashboard" id="dashboard">
-    <div class="header">
-        <div class="glitch">⚡ MISS ALIYA ⚡</div>
-        <div class="sub">✧ LEGENDARY ACCESS ✧</div>
+<!-- MAIN DASHBOARD -->
+<div class="container dashboard" id="dashboard">
+    <div class="hero">
+        <div class="fancy-name">⚜️ MISS ALIYA ⚜️</div>
+        <div class="glow-line"></div>
+        <div class="sub-tag">✦ LEGENDARY ACCESS ✦ TERMINAL MASTER ✦</div>
     </div>
 
-    <div class="grid">
-        <!-- COOKIES 4 -->
-        <div class="card" data-url="https://cookis-convo-aliya.onrender.com/"><div class="card-num">#C9K1</div><div class="card-name">C9KIC C9NVO ①</div><div class="made">made by <span>MISS ALIYA</span></div></div>
-        <div class="card" data-url="https://cookies-convo-3.onrender.com/"><div class="card-num">#C9K2</div><div class="card-name">C9KIC C9NVO ②</div><div class="made">made by <span>MISS ALIYA</span></div></div>
-        <div class="card" data-url="https://cookies-convo-4.onrender.com/"><div class="card-num">#C9K3</div><div class="card-name">C9KIC C9NVO ③</div><div class="made">made by <span>MISS ALIYA</span></div></div>
-        <div class="card" data-url="https://cokkis-convo-5.onrender.com/"><div class="card-num">#C9K4</div><div class="card-name">C9KIC C9NVO ④</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+    <div class="cards-grid">
+        <div class="legend-card card-cookie" data-url="https://cookis-convo-aliya.onrender.com/">
+            <div class="card-num">#C9K1</div>
+            <div class="card-title">C9KIC C9NVO ①</div>
+            <div class="card-desc">✦ ALPHA REALM ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
+        <div class="legend-card card-cookie" data-url="https://cookies-convo-3.onrender.com/">
+            <div class="card-num">#C9K2</div>
+            <div class="card-title">C9KIC C9NVO ②</div>
+            <div class="card-desc">✦ PHANTOM NODE ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
+        <div class="legend-card card-cookie" data-url="https://cookies-convo-4.onrender.com/">
+            <div class="card-num">#C9K3</div>
+            <div class="card-title">C9KIC C9NVO ③</div>
+            <div class="card-desc">✦ SHADOW VERSE ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
+        <div class="legend-card card-cookie" data-url="https://cokkis-convo-5.onrender.com/">
+            <div class="card-num">#C9K4</div>
+            <div class="card-title">C9KIC C9NVO ④</div>
+            <div class="card-desc">✦ OMEGA GATE ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
 
-        <!-- MESSENGER -->
-        <div class="card" data-url="https://mltibot-2.onrender.com"><div class="card-num">#MB01</div><div class="card-name">MΛSSΞNGΞR CHΛT BOT</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="legend-card card-messenger" data-url="https://mltibot-2.onrender.com">
+            <div class="card-num">#M3SS</div>
+            <div class="card-title">MΛSSΞNGΞR CHΛT BOT</div>
+            <div class="card-desc">✦ HYBRID AI ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
 
-        <!-- INSTA 3 -->
-        <div class="card" data-url="https://insta-server2-duc5.onrender.com"><div class="card-num">#INS1</div><div class="card-name">INSTA SERVER I</div><div class="made">made by <span>MISS ALIYA</span></div></div>
-        <div class="card" data-url="https://insta-inbox.onrender.com"><div class="card-num">#INS2</div><div class="card-name">INSTA INBOX</div><div class="made">made by <span>MISS ALIYA</span></div></div>
-        <div class="card" data-url="https://offline-instapost-server-0mi3.onrender.com/"><div class="card-num">#INS3</div><div class="card-name">OFFLINE INSTAPOST</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="legend-card card-insta" data-url="https://insta-server2-duc5.onrender.com">
+            <div class="card-num">#INSTA1</div>
+            <div class="card-title">INSTA SERVER I</div>
+            <div class="card-desc">✦ PRIVATE CORE ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
+        <div class="legend-card card-insta" data-url="https://insta-inbox.onrender.com">
+            <div class="card-num">#INSTA2</div>
+            <div class="card-title">INSTA INBOX</div>
+            <div class="card-desc">✦ DARK PANEL ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
+        <div class="legend-card card-insta" data-url="https://offline-instapost-server-0mi3.onrender.com/">
+            <div class="card-num">#INSTA3</div>
+            <div class="card-title">OFFLINE INSTAPOST</div>
+            <div class="card-desc">✦ GHOST NODE ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
 
-        <!-- TOKEN 2 -->
-        <div class="card" data-url="https://convo-token-server-5.onrender.com/"><div class="card-num">#TKN1</div><div class="card-name">T0KΞN SΞRVΞR V</div><div class="made">made by <span>MISS ALIYA</span></div></div>
-        <div class="card" data-url="https://convo-3-mfud.onrender.com/"><div class="card-num">#TKN2</div><div class="card-name">C0NV0 T0KΞN |||</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="legend-card card-token" data-url="https://convo-token-server-5.onrender.com/">
+            <div class="card-num">#T0KN1</div>
+            <div class="card-title">T0KΞN SΞRVΞR V</div>
+            <div class="card-desc">✦ AUTH GATE ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
+        <div class="legend-card card-token" data-url="https://convo-3-mfud.onrender.com/">
+            <div class="card-num">#T0KN2</div>
+            <div class="card-title">C0NV0 T0KΞN |||</div>
+            <div class="card-desc">✦ ENCRYPTED ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
 
-        <!-- COVER DP -->
-        <div class="card" data-url="https://coverdp-2.onrender.com/"><div class="card-num">#CDP1</div><div class="card-name">C0VΞR DP STUDIO</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="legend-card card-cover" data-url="https://coverdp-2.onrender.com/">
+            <div class="card-num">#CVDP</div>
+            <div class="card-title">C0VΞR DP STUDIO</div>
+            <div class="card-desc">✦ ART ENGINE ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
 
-        <!-- APK -->
-        <div class="card" data-url="https://apk-k18z.onrender.com/"><div class="card-num">#APKX</div><div class="card-name">PRΞMIUM APK VAULT</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="legend-card card-apk" data-url="https://apk-k18z.onrender.com/">
+            <div class="card-num">#APKX</div>
+            <div class="card-title">PRΞMIUM APK VAULT</div>
+            <div class="card-desc">✦ MODS/TOOLS ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
 
-        <!-- RDX TOOLS -->
-        <div class="card" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders"><div class="card-num">#RDX0</div><div class="card-name">RDX T00LKIT</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="legend-card card-tools" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders">
+            <div class="card-num">#RDX7</div>
+            <div class="card-title">RDX T00LKIT</div>
+            <div class="card-desc">✦ ALL TOOLS ✦</div>
+            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
+            <div class="click-sign">[ CLICK TO ENTER ]</div>
+        </div>
     </div>
 
-    <div class="footer">
-        <div class="end">⚡ END TO END CONVO VERY SOON ⚡</div>
+    <div class="convo-footer">
+        <div class="end-line">⚡ END TO END CONVO VERY SOON ⚡</div>
         <div class="soon">✦ very soon ✦</div>
-        <div style="margin-top:12px; font-size:0.7rem;">MISS ALIYA // ALL SYSTEMS ACTIVE</div>
+    </div>
+
+    <div class="footer-note">
+        ⚜️ MISS ALIYA ⚜️  •  ALL SERVICES ACTIVE  •  LEGENDARY STATUS
     </div>
 </div>
 
 <script>
-    const splash = document.getElementById('splash');
-    const dashboard = document.getElementById('dashboard');
+    const splash = document.getElementById('splashScreen');
+    const dashboard = document.querySelector('.dashboard');
     const welcomeBtn = document.getElementById('welcomeBtn');
 
-    welcomeBtn.onclick = () => {
+    welcomeBtn.addEventListener('click', () => {
         splash.classList.add('hide');
         dashboard.classList.add('show');
         setTimeout(() => {
             splash.style.display = 'none';
-        }, 500);
-    };
+        }, 600);
+    });
 
-    document.querySelectorAll('.card').forEach(card => {
-        card.onclick = () => {
+    document.querySelectorAll('.legend-card').forEach(card => {
+        card.addEventListener('click', () => {
             const url = card.getAttribute('data-url');
             if(url) window.open(url, '_blank');
-        };
+        });
     });
 </script>
 </body>
