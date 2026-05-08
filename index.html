@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>MISS ALIYA ✦ LEGENDARY DASHBOARD</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>MISS ALIYA ✦ LEGENDARY ENTRY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,45 +17,100 @@
             min-height: 100vh;
             background: radial-gradient(ellipse at 30% 40%, #0a0c1a, #010105);
             font-family: 'Poppins', 'Orbitron', monospace;
-            padding: 20px;
-            position: relative;
             overflow-x: hidden;
         }
 
-        /* animated gradient background */
+        /* animated cyber grid background */
         body::before {
             content: "";
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: repeating-linear-gradient(0deg, rgba(0,255,255,0.05) 0px, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 12px),
+                        repeating-linear-gradient(90deg, rgba(255,0,255,0.05) 0px, rgba(255,0,255,0.05) 1px, transparent 1px, transparent 12px);
+            animation: drift 30s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes drift {
+            0% { transform: rotate(0deg) translate(0,0); }
+            100% { transform: rotate(360deg) translate(20px,20px); }
+        }
+
+        /* scanline effect */
+        .scanline {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(45deg, rgba(255,0,150,0.03) 0px, rgba(255,0,150,0.03) 2px, transparent 2px, transparent 10px),
-                        repeating-linear-gradient(135deg, rgba(0,255,200,0.03) 0px, rgba(0,255,200,0.03) 2px, transparent 2px, transparent 12px);
+            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.02) 0px, rgba(0,255,0,0.02) 2px, transparent 2px, transparent 8px);
             pointer-events: none;
-            z-index: 0;
-            animation: shiftBg 20s linear infinite;
-        }
-        @keyframes shiftBg {
-            0% { background-position: 0 0, 0 0; }
-            100% { background-position: 100px 100px, -100px 80px; }
+            z-index: 999;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+        /* ========= PAGE 1 : SPLASH SCREEN ========= */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 40%, #0a0c1a, #010105);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(0px);
+        }
+        .splash-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+            backdrop-filter: blur(20px);
+            transform: scale(0.95);
+        }
+        .splash-container {
             position: relative;
             z-index: 10;
+            width: 90%;
+            max-width: 550px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ========= MISS ALIYA SUPER STYLISH ========= */
-        .hero {
-            text-align: center;
-            margin-bottom: 60px;
-            padding: 20px;
+        /* image frame */
+        .img-frame {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(18px);
+            border-radius: 68px;
+            padding: 15px;
+            border: 1px solid rgba(255,100,200,0.5);
+            box-shadow: 0 0 40px rgba(255,0,150,0.3);
+            margin-bottom: 35px;
+            transition: 0.4s;
         }
+        .img-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 60px rgba(255,0,200,0.6);
+            border-color: #ff66ff;
+        }
+        .img-frame img {
+            width: 100%;
+            border-radius: 54px;
+            display: block;
+            box-shadow: 0 8px 28px black;
+        }
+
+        /* MISS ALIYA fancy name */
         .fancy-name {
-            font-size: 5.2rem;
+            font-size: 3.8rem;
             font-weight: 900;
             font-family: 'Orbitron', monospace;
             background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #FFD1FF, #C084FC);
@@ -63,322 +118,255 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: gradientFlow 4s ease infinite;
-            text-shadow: 0 0 20px rgba(255,105,180,0.5);
-            letter-spacing: 4px;
+            animation: gradientFlow 3s ease infinite;
+            text-shadow: 0 0 30px rgba(255,105,180,0.6);
+            letter-spacing: 5px;
+            margin: 20px 0 10px;
         }
         @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .glow-line {
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, #ff0066, #ffcc00, #ff0066);
-            margin: 20px auto;
-            border-radius: 10px;
-            animation: pulseWidth 2s infinite;
-        }
-        @keyframes pulseWidth {
-            0%,100% { width: 120px; opacity: 0.6; }
-            50% { width: 200px; opacity: 1; }
-        }
-        .sub-tag {
-            color: #b0ffe0;
-            font-family: monospace;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
-            background: rgba(0,0,0,0.6);
-            display: inline-block;
-            padding: 6px 24px;
+
+        .welcome-btn {
+            margin-top: 35px;
+            background: linear-gradient(95deg, #ff3388, #ffcc33);
+            border: none;
+            padding: 16px 42px;
             border-radius: 60px;
-            border: 1px solid #ff66c0;
-            backdrop-filter: blur(8px);
-        }
-
-        /* CARDS GRID */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        /* EACH CARD - UNIQUE STYLE WITH MADE BY MISS ALIYA INSIDE */
-        .legend-card {
-            background: rgba(8, 12, 28, 0.65);
-            backdrop-filter: blur(14px);
-            border-radius: 36px;
-            padding: 28px 20px 20px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(255,255,200,0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        .legend-card::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            opacity: 0;
-            transition: 0.5s;
-            pointer-events: none;
-        }
-        .legend-card:hover::after {
-            opacity: 1;
-        }
-        .legend-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #ff66c4;
-            box-shadow: 0 0 30px rgba(255,102,196,0.5);
-        }
-
-        /* different card accents */
-        .card-cookie { border-top: 3px solid #ff9966; }
-        .card-messenger { border-top: 3px solid #c084fc; }
-        .card-insta { border-top: 3px solid #ff4d6d; }
-        .card-token { border-top: 3px solid #2dd4bf; }
-        .card-cover { border-top: 3px solid #fbbf24; }
-        .card-apk { border-top: 3px solid #e879f9; }
-        .card-tools { border-top: 3px solid #fb923c; }
-
-        .card-num {
-            font-size: 2rem;
-            font-weight: 900;
-            font-family: 'Orbitron';
-            background: linear-gradient(120deg, #f0f, #ffcc33);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .card-title {
-            font-size: 1.65rem;
-            font-weight: 800;
-            margin: 12px 0 8px;
-            color: #fff3e6;
-            text-shadow: 0 0 5px #ff44aa;
-            letter-spacing: 1px;
-        }
-        .card-desc {
-            font-size: 0.7rem;
-            color: #a3e4ff;
-            font-family: monospace;
-            background: rgba(0,0,0,0.4);
-            display: inline-block;
-            padding: 4px 15px;
-            border-radius: 20px;
-        }
-        .made-by {
-            margin-top: 20px;
-            font-size: 0.7rem;
-            color: #ffaaee;
-            font-family: monospace;
-            border-top: 1px dashed rgba(255,100,200,0.4);
-            padding-top: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .made-by span {
+            font-size: 1.5rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #ff99cc, #ff66aa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-size: 0.8rem;
-        }
-        .click-sign {
-            font-size: 0.6rem;
-            margin-top: 10px;
-            opacity: 0.6;
-            color: cyan;
-        }
-
-        /* FOOTER MESSAGE */
-        .convo-footer {
-            text-align: center;
-            margin: 60px 0 30px;
-            padding: 30px 20px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 70px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,100,200,0.3);
-        }
-        .end-line {
-            font-size: 1.8rem;
-            font-weight: 800;
             font-family: 'Orbitron';
-            background: linear-gradient(135deg, #f5f0ff, #ffb3e6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #0a0c1a;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 15px #ff66aa;
             letter-spacing: 2px;
         }
-        .soon {
-            font-size: 1.2rem;
-            margin-top: 15px;
-            color: #ffcc88;
+        .welcome-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px #ff44cc;
+            background: linear-gradient(95deg, #ff44aa, #ffe066);
+        }
+        .press-text {
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: #92ffd0;
             font-family: monospace;
-            animation: blink 1.5s infinite;
+            animation: blinkSoft 1.2s infinite;
+            background: rgba(0,0,0,0.5);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
         }
-        @keyframes blink {
-            0%,100% { opacity: 1; text-shadow: 0 0 2px #ffaa44; }
-            50% { opacity: 0.7; text-shadow: 0 0 12px #ff66cc; }
-        }
-        .footer-note {
-            text-align: center;
-            margin-top: 30px;
-            padding: 15px;
-            color: #6c7a9e;
-            font-size: 0.7rem;
+        @keyframes blinkSoft {
+            0%,100% { opacity: 0.7; letter-spacing: 1px; }
+            50% { opacity: 1; letter-spacing: 3px; text-shadow: 0 0 5px cyan; }
         }
 
+        /* ========= PAGE 2 : DASHBOARD ========= */
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.2s;
+            pointer-events: none;
+        }
+        .dashboard.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .unix-header {
+            background: rgba(0, 20, 20, 0.65);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 20px 30px;
+            text-align: center;
+            margin-bottom: 45px;
+            border: 1px solid #00ffc3;
+            box-shadow: 0 0 18px cyan;
+        }
+        .glitch-text {
+            font-size: 3rem;
+            font-weight: 900;
+            font-family: 'Orbitron';
+            color: #0ff;
+            text-shadow: -2px -2px 0 #ff00cc, 2px 2px 0 #00ffcc;
+            animation: glitchDash 0.7s infinite;
+        }
+        @keyframes glitchDash {
+            0% { text-shadow: -1px -1px 0 #ff00cc, 1px 1px 0 #00ffcc; }
+            25% { text-shadow: -2px 1px 0 #ff00cc, 1px -1px 0 #00ffcc; }
+            50% { text-shadow: 1px -2px 0 #ff00cc, -1px 2px 0 #00ffcc; }
+            75% { text-shadow: 0px 2px 0 #ff00cc, 2px 0px 0 #00ffcc; }
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .unix-card {
+            background: rgba(12, 22, 35, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 22px 18px;
+            text-align: center;
+            cursor: pointer;
+            border-left: 6px solid #ff44ee;
+            border-bottom: 2px solid #33ffcc;
+            transition: 0.2s linear;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .unix-card:hover {
+            transform: translateY(-6px);
+            background: #0a142ecc;
+            border-left-color: #ffaa33;
+            box-shadow: 0 0 28px #ff66cc80;
+        }
+
+        .card-code {
+            font-size: 1rem;
+            background: #00000066;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 30px;
+            color: #0f0;
+            font-weight: bold;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 14px 0;
+            background: linear-gradient(145deg, #fff, #aaf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .made-by {
+            margin: 18px 0 8px;
+            font-size: 0.7rem;
+            color: #ffb3ba;
+            border-top: 1px dashed cyan;
+            padding-top: 12px;
+        }
+        .made-by span { color: #ff88cc; font-weight: bold; }
+
+        .unix-footer {
+            margin-top: 55px;
+            background: #03070faa;
+            padding: 30px;
+            border-radius: 40px;
+            text-align: center;
+            font-family: monospace;
+        }
+        .end-line {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #aaffdd;
+        }
+        .soon {
+            font-size: 1rem;
+            margin-top: 12px;
+            color: #ffaa66;
+            animation: pulseSoon 1s infinite;
+        }
+        @keyframes pulseSoon { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+
         @media (max-width: 700px) {
-            .fancy-name { font-size: 2.3rem; letter-spacing: 2px; }
-            .card-title { font-size: 1.2rem; }
-            .end-line { font-size: 1rem; }
+            .fancy-name { font-size: 2.2rem; letter-spacing: 2px; }
+            .welcome-btn { font-size: 1.1rem; padding: 12px 28px; }
+            .glitch-text { font-size: 1.8rem; }
+            .card-title { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    
-    <!-- MISS ALIYA - AMAZING FONTS STYLE -->
-    <div class="hero">
+
+<!-- PAGE 1: SPLASH SCREEN -->
+<div class="splash-screen" id="splashScreen">
+    <div class="splash-container">
+        <div class="img-frame">
+            <img src="https://i.ibb.co/938v5npv/fba428b57ab944eaa0014d96b3da238d-1.jpg" alt="MISS ALIYA" onerror="this.src='https://via.placeholder.com/500x500?text=MISS+ALIYA'">
+        </div>
         <div class="fancy-name">⚜️ MISS ALIYA ⚜️</div>
-        <div class="glow-line"></div>
-        <div class="sub-tag">✦ LEGENDARY ACCESS ✦ TERMINAL MASTER ✦</div>
-    </div>
-
-    <div class="cards-grid">
-        <!-- 1️⃣ COOKIES CONVO - 4 cards -->
-        <div class="legend-card card-cookie" data-url="https://cookis-convo-aliya.onrender.com/">
-            <div class="card-num">#C9K1</div>
-            <div class="card-title">C9KIC C9NVO ①</div>
-            <div class="card-desc">✦ ALPHA REALM ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-        <div class="legend-card card-cookie" data-url="https://cookies-convo-3.onrender.com/">
-            <div class="card-num">#C9K2</div>
-            <div class="card-title">C9KIC C9NVO ②</div>
-            <div class="card-desc">✦ PHANTOM NODE ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-        <div class="legend-card card-cookie" data-url="https://cookies-convo-4.onrender.com/">
-            <div class="card-num">#C9K3</div>
-            <div class="card-title">C9KIC C9NVO ③</div>
-            <div class="card-desc">✦ SHADOW VERSE ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-        <div class="legend-card card-cookie" data-url="https://cokkis-convo-5.onrender.com/">
-            <div class="card-num">#C9K4</div>
-            <div class="card-title">C9KIC C9NVO ④</div>
-            <div class="card-desc">✦ OMEGA GATE ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-
-        <!-- 2️⃣ MESSENGER BOT -->
-        <div class="legend-card card-messenger" data-url="https://mltibot-2.onrender.com">
-            <div class="card-num">#M3SS</div>
-            <div class="card-title">MΛSSΞNGΞR CHΛT BOT</div>
-            <div class="card-desc">✦ HYBRID AI ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-
-        <!-- 3️⃣ INSTA SERVERS (3 cards) -->
-        <div class="legend-card card-insta" data-url="https://insta-server2-duc5.onrender.com">
-            <div class="card-num">#INSTA1</div>
-            <div class="card-title">INSTA SERVER I</div>
-            <div class="card-desc">✦ PRIVATE CORE ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-        <div class="legend-card card-insta" data-url="https://insta-inbox.onrender.com">
-            <div class="card-num">#INSTA2</div>
-            <div class="card-title">INSTA INBOX</div>
-            <div class="card-desc">✦ DARK PANEL ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-        <div class="legend-card card-insta" data-url="https://offline-instapost-server-0mi3.onrender.com/">
-            <div class="card-num">#INSTA3</div>
-            <div class="card-title">OFFLINE INSTAPOST</div>
-            <div class="card-desc">✦ GHOST NODE ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-
-        <!-- 4️⃣ TOKEN SERVERS (2 cards) -->
-        <div class="legend-card card-token" data-url="https://convo-token-server-5.onrender.com/">
-            <div class="card-num">#T0KN1</div>
-            <div class="card-title">T0KΞN SΞRVΞR V</div>
-            <div class="card-desc">✦ AUTH GATE ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-        <div class="legend-card card-token" data-url="https://convo-3-mfud.onrender.com/">
-            <div class="card-num">#T0KN2</div>
-            <div class="card-title">C0NV0 T0KΞN |||</div>
-            <div class="card-desc">✦ ENCRYPTED ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-
-        <!-- 5️⃣ COVER DP -->
-        <div class="legend-card card-cover" data-url="https://coverdp-2.onrender.com/">
-            <div class="card-num">#CVDP</div>
-            <div class="card-title">C0VΞR DP STUDIO</div>
-            <div class="card-desc">✦ ART ENGINE ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-
-        <!-- 6️⃣ APK VAULT -->
-        <div class="legend-card card-apk" data-url="https://apk-k18z.onrender.com/">
-            <div class="card-num">#APKX</div>
-            <div class="card-title">PRΞMIUM APK VAULT</div>
-            <div class="card-desc">✦ MODS/TOOLS ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-
-        <!-- 7️⃣ RDX TOOLKIT -->
-        <div class="legend-card card-tools" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders">
-            <div class="card-num">#RDX7</div>
-            <div class="card-title">RDX T00LKIT</div>
-            <div class="card-desc">✦ ALL TOOLS ✦</div>
-            <div class="made-by">👑 made by <span>MISS ALIYA</span> 👑</div>
-            <div class="click-sign">[ CLICK TO ENTER ]</div>
-        </div>
-    </div>
-
-    <!-- END TO END CONVO + VERY SOON -->
-    <div class="convo-footer">
-        <div class="end-line">⚡ END TO END CONVO VERY SOON ⚡</div>
-        <div class="soon">✦ very soon ✦</div>
-    </div>
-
-    <div class="footer-note">
-        ⚜️ MISS ALIYA ⚜️  •  ALL SERVICES ACTIVE  •  LEGENDARY STATUS
+        <button class="welcome-btn" id="welcomeBtn">WELCOME</button>
+        <div class="press-text">⟡ PRESS THIS ⟡  ||  [ENTER DASHBOARD]</div>
     </div>
 </div>
 
+<!-- PAGE 2: DASHBOARD (hidden initially) -->
+<div class="dashboard" id="dashboard">
+    <div class="unix-header">
+        <div class="glitch-text">⚡ MISS ALIYA :: TERMINAL_MODE ⚡</div>
+        <div style="color:#2effb0; font-size:0.7rem;">$ WELCOME TO THE MASTER DASHBOARD // ACCESS GRANTED</div>
+    </div>
+
+    <div class="cards-grid">
+        <!-- COOKIES 4 cards -->
+        <div class="unix-card" data-url="https://cookis-convo-aliya.onrender.com/"><div class="card-code">[SRV-01]</div><div class="card-title">C9KIC C9NVO ①</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="unix-card" data-url="https://cookies-convo-3.onrender.com/"><div class="card-code">[SRV-02]</div><div class="card-title">C9KIC C9NVO ②</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="unix-card" data-url="https://cookies-convo-4.onrender.com/"><div class="card-code">[SRV-03]</div><div class="card-title">C9KIC C9NVO ③</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="unix-card" data-url="https://cokkis-convo-5.onrender.com/"><div class="card-code">[SRV-04]</div><div class="card-title">C9KIC C9NVO ④</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+
+        <!-- MESSENGER BOT -->
+        <div class="unix-card" data-url="https://mltibot-2.onrender.com"><div class="card-code">[BOT]</div><div class="card-title">MΛSSΞNGΞR CHΛT BOT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+
+        <!-- INSTA 3 -->
+        <div class="unix-card" data-url="https://insta-server2-duc5.onrender.com"><div class="card-code">[INSTA-1]</div><div class="card-title">INSTA SERVER I</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="unix-card" data-url="https://insta-inbox.onrender.com"><div class="card-code">[INSTA-2]</div><div class="card-title">INSTA INBOX</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="unix-card" data-url="https://offline-instapost-server-0mi3.onrender.com/"><div class="card-code">[INSTA-3]</div><div class="card-title">OFFLINE INSTAPOST</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+
+        <!-- TOKEN 2 -->
+        <div class="unix-card" data-url="https://convo-token-server-5.onrender.com/"><div class="card-code">[TKN-α]</div><div class="card-title">T0KΞN SΞRVΞR V</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="unix-card" data-url="https://convo-3-mfud.onrender.com/"><div class="card-code">[TKN-β]</div><div class="card-title">C0NV0 T0KΞN |||</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+
+        <!-- COVER DP -->
+        <div class="unix-card" data-url="https://coverdp-2.onrender.com/"><div class="card-code">[COVER]</div><div class="card-title">C0VΞR DP STUDIO</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+
+        <!-- APK -->
+        <div class="unix-card" data-url="https://apk-k18z.onrender.com/"><div class="card-code">[APK]</div><div class="card-title">PRΞMIUM APK VAULT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+
+        <!-- RDX TOOLS -->
+        <div class="unix-card" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders"><div class="card-code">[RDX]</div><div class="card-title">RDX T00LKIT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+    </div>
+
+    <div class="unix-footer">
+        <div class="end-line">⚡ END TO END CONVO VERY SOON ⚡</div>
+        <div class="soon">✦ very soon ✦</div>
+        <div style="margin-top:20px; font-size:0.7rem;">MISS ALIYA // ALL SYSTEMS ACTIVE</div>
+    </div>
+</div>
+
+<div class="scanline"></div>
+
 <script>
-    document.querySelectorAll('.legend-card').forEach(card => {
-        card.addEventListener('click', (e) => {
+    const splash = document.getElementById('splashScreen');
+    const dashboard = document.getElementById('dashboard');
+    const welcomeBtn = document.getElementById('welcomeBtn');
+
+    welcomeBtn.addEventListener('click', () => {
+        splash.classList.add('hide');
+        dashboard.classList.add('show');
+        
+        // optional: play subtle sound vibe (no actual sound, just class)
+        setTimeout(() => {
+            splash.style.display = 'none';
+        }, 800);
+    });
+
+    // Card click handlers for dashboard
+    document.querySelectorAll('.unix-card').forEach(card => {
+        card.addEventListener('click', () => {
             const url = card.getAttribute('data-url');
             if(url) window.open(url, '_blank');
         });
