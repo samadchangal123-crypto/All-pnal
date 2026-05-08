@@ -2,352 +2,291 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>MISS ALIYA ✦ ENTRY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISS ALIYA ✦ LEGEND</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none;
         }
 
         body {
             min-height: 100vh;
-            background: radial-gradient(ellipse at 30% 40%, #0a0c1a, #010105);
-            font-family: 'Poppins', 'Orbitron', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
+            font-family: 'Courier New', 'Fira Code', monospace;
             overflow-x: hidden;
         }
 
-        /* animated background */
+        /* matrix effect */
         body::before {
             content: "";
-            position: fixed;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background: repeating-linear-gradient(0deg, rgba(0,255,255,0.04) 0px, rgba(0,255,255,0.04) 1px, transparent 1px, transparent 10px),
-                        repeating-linear-gradient(90deg, rgba(255,0,255,0.04) 0px, rgba(255,0,255,0.04) 1px, transparent 1px, transparent 10px);
-            animation: drift 25s linear infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-        @keyframes drift {
-            0% { transform: rotate(0deg) translate(0,0); }
-            100% { transform: rotate(360deg) translate(30px,30px); }
-        }
-
-        /* ========= PAGE 1 : SPLASH (pehle wala style) ========= */
-        .splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at 30% 40%, #0a0c1a, #010105);
+            background-image: repeating-linear-gradient(0deg, rgba(0,255,0,0.03) 0px, rgba(0,255,0,0.03) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+        }
+
+        /* ===== SPLASH SCREEN (pehle wala simple) ===== */
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s ease;
         }
-        .splash-screen.hide {
+        .splash.hide {
             opacity: 0;
             visibility: hidden;
-            transform: scale(0.96);
+            transform: scale(0.95);
         }
-        .splash-container {
-            width: 90%;
-            max-width: 520px;
+        .splash-inner {
             text-align: center;
-            animation: fadeUp 0.7s ease;
+            max-width: 450px;
+            padding: 20px;
         }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* image frame - pehle jaisa glassmorphism */
-        .img-frame {
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(16px);
-            border-radius: 60px;
-            padding: 14px;
-            border: 1px solid rgba(255,120,200,0.5);
-            box-shadow: 0 0 35px rgba(255,50,150,0.3);
-            margin-bottom: 30px;
-            transition: 0.3s;
-        }
-        .img-frame:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 55px rgba(255,80,180,0.5);
-        }
-        .img-frame img {
+        .splash-inner img {
             width: 100%;
-            border-radius: 48px;
-            display: block;
+            border-radius: 30px;
+            box-shadow: 0 0 30px rgba(255,0,150,0.3);
+            border: 2px solid rgba(255,100,200,0.5);
         }
-
-        .fancy-name {
-            font-size: 3.5rem;
-            font-weight: 900;
-            font-family: 'Orbitron', monospace;
-            background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #C084FC);
-            background-size: 300% 300%;
+        .miss-name {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff99cc, #ff66aa, #ff3388);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: gradientFlow 3s ease infinite;
-            letter-spacing: 4px;
             margin: 20px 0 10px;
+            font-family: 'Courier New', monospace;
         }
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .welcome-btn {
-            margin-top: 30px;
             background: linear-gradient(95deg, #ff3388, #ffcc33);
             border: none;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-size: 1.4rem;
+            padding: 12px 35px;
+            border-radius: 40px;
+            font-size: 1.3rem;
             font-weight: bold;
-            font-family: 'Orbitron';
-            color: #0a0c1a;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 0 15px #ff66aa;
-            letter-spacing: 2px;
-        }
-        .welcome-btn:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 30px #ff44cc;
-        }
-
-        .press-text {
-            margin-top: 18px;
-            font-size: 0.8rem;
-            color: #aaffdd;
             font-family: monospace;
-            animation: blink 1.2s infinite;
-            background: rgba(0,0,0,0.4);
-            display: inline-block;
-            padding: 5px 18px;
-            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 0 15px #ff66aa;
+        }
+        .press-this {
+            margin-top: 15px;
+            color: #0f0;
+            font-family: monospace;
+            animation: blink 1s infinite;
         }
         @keyframes blink {
-            0%,100% { opacity: 0.7; letter-spacing: 1px; }
-            50% { opacity: 1; letter-spacing: 3px; text-shadow: 0 0 5px cyan; }
+            0%,100% { opacity: 0.6; }
+            50% { opacity: 1; text-shadow: 0 0 5px #0f0; }
         }
 
-        /* ========= PAGE 2 : DASHBOARD (pehle wala amazing style) ========= */
+        /* ===== DASHBOARD (PEHLE WALE JAISA EXACT) ===== */
         .dashboard {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 25px 20px;
+            padding: 30px 20px;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease 0.2s;
+            transition: 0.5s ease;
             pointer-events: none;
         }
         .dashboard.show {
             opacity: 1;
-            transform: translateY(0);
             pointer-events: auto;
         }
 
         /* header */
-        .hero {
+        .header {
             text-align: center;
             margin-bottom: 50px;
         }
-        .dash-name {
-            font-size: 3.8rem;
-            font-weight: 900;
-            font-family: 'Orbitron';
-            background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #FFD1FF);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientFlow 3s ease infinite;
-            letter-spacing: 3px;
+        .glitch {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #f0f;
+            text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75);
+            animation: glitch 0.8s infinite;
+            font-family: 'Courier New', monospace;
         }
-        .glow-line {
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #ff0066, #ffcc00);
-            margin: 15px auto;
-            border-radius: 10px;
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75); }
+            50% { text-shadow: -0.05em 0.025em 0 rgba(255,0,0,0.75), 0.025em 0.05em 0 rgba(0,255,0,0.75); }
+            100% { text-shadow: 0.05em 0.05em 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75); }
+        }
+        .sub {
+            color: #3aff8e;
+            font-size: 0.8rem;
+            border: 1px solid #3aff8e80;
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 30px;
         }
 
         /* cards grid */
-        .cards-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin: 40px 0;
         }
 
-        /* stylish card - pehle wala hi but upgraded */
-        .stylish-card {
-            background: rgba(10, 20, 35, 0.6);
-            backdrop-filter: blur(14px);
-            border-radius: 32px;
-            padding: 25px 18px 18px 18px;
+        /* card style - pehle wala */
+        .card {
+            background: rgba(10, 20, 30, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 25px 18px;
             text-align: center;
             cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.12);
-            transition: all 0.25s ease;
-            box-shadow: 0 10px 25px -8px black;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: 0.25s;
         }
-        .stylish-card:hover {
+        .card:hover {
             transform: translateY(-8px);
-            border-color: #ff66c4;
-            box-shadow: 0 0 30px rgba(255,102,196,0.4);
-            background: rgba(20, 30, 55, 0.75);
+            border-color: #ff44cc;
+            box-shadow: 0 0 25px rgba(255,68,204,0.4);
         }
-
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
+        .card-num {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff3388, #00ffcc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         .card-name {
             font-size: 1.4rem;
             font-weight: 800;
             margin: 10px 0;
-            background: linear-gradient(120deg, #fff, #ffccdd);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #fff6d5;
         }
-        .made-by {
-            margin-top: 18px;
+        .made {
+            margin-top: 15px;
             font-size: 0.7rem;
-            color: #ffb7c5;
-            border-top: 1px dashed rgba(255,100,150,0.4);
-            padding-top: 12px;
+            color: #ffaaee;
+            border-top: 1px dashed rgba(255,100,200,0.4);
+            padding-top: 10px;
         }
-        .made-by span {
-            color: #ff88cc;
+        .made span {
+            color: #ff66aa;
             font-weight: bold;
         }
 
         /* footer */
-        .footer-section {
+        .footer {
             text-align: center;
-            margin-top: 55px;
+            margin-top: 50px;
             padding: 25px;
-            background: rgba(0,0,0,0.35);
-            border-radius: 50px;
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.4);
+            border-radius: 40px;
         }
-        .end-line {
-            font-size: 1.5rem;
+        .end {
+            font-size: 1.3rem;
             font-weight: bold;
             color: #ffdd99;
-            letter-spacing: 2px;
         }
-        .very-soon {
-            font-size: 1rem;
-            margin-top: 10px;
+        .soon {
+            font-size: 0.9rem;
+            margin-top: 8px;
             color: #88ffdd;
-            animation: pulseText 1.2s infinite;
+            animation: pulse 1s infinite;
         }
-        @keyframes pulseText {
+        @keyframes pulse {
             0%,100% { opacity: 0.7; }
-            50% { opacity: 1; text-shadow: 0 0 5px cyan; }
+            50% { opacity: 1; }
         }
 
         @media (max-width: 600px) {
-            .fancy-name { font-size: 2rem; }
-            .dash-name { font-size: 2rem; }
-            .card-name { font-size: 1.1rem; }
-            .end-line { font-size: 1rem; }
+            .glitch { font-size: 2rem; }
+            .card-name { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
 <!-- SPLASH SCREEN -->
-<div class="splash-screen" id="splashScreen">
-    <div class="splash-container">
-        <div class="img-frame">
-            <img src="https://i.ibb.co/938v5npv/fba428b57ab944eaa0014d96b3da238d-1.jpg" alt="MISS ALIYA">
-        </div>
-        <div class="fancy-name">⚜️ MISS ALIYA ⚜️</div>
+<div class="splash" id="splash">
+    <div class="splash-inner">
+        <img src="https://i.ibb.co/938v5npv/fba428b57ab944eaa0014d96b3da238d-1.jpg" alt="MISS ALIYA">
+        <div class="miss-name">⚜️ MISS ALIYA ⚜️</div>
         <button class="welcome-btn" id="welcomeBtn">WELCOME</button>
-        <div class="press-text">⟡ PRESS THIS ⟡</div>
+        <div class="press-this">⟡ PRESS THIS ⟡</div>
     </div>
 </div>
 
 <!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
-    <div class="hero">
-        <div class="dash-name">⚜️ MISS ALIYA ⚜️</div>
-        <div class="glow-line"></div>
-        <div style="color:#99ffdd; font-size:0.8rem; letter-spacing:2px;">✦ MASTER CONTROL ✦</div>
+    <div class="header">
+        <div class="glitch">⚡ MISS ALIYA ⚡</div>
+        <div class="sub">✧ LEGENDARY ACCESS ✧</div>
     </div>
 
-    <div class="cards-grid">
+    <div class="grid">
         <!-- COOKIES 4 -->
-        <div class="stylish-card" data-url="https://cookis-convo-aliya.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ①</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="stylish-card" data-url="https://cookies-convo-3.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ②</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="stylish-card" data-url="https://cookies-convo-4.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ③</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="stylish-card" data-url="https://cokkis-convo-5.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ④</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://cookis-convo-aliya.onrender.com/"><div class="card-num">#C9K1</div><div class="card-name">C9KIC C9NVO ①</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://cookies-convo-3.onrender.com/"><div class="card-num">#C9K2</div><div class="card-name">C9KIC C9NVO ②</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://cookies-convo-4.onrender.com/"><div class="card-num">#C9K3</div><div class="card-name">C9KIC C9NVO ③</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://cokkis-convo-5.onrender.com/"><div class="card-num">#C9K4</div><div class="card-name">C9KIC C9NVO ④</div><div class="made">made by <span>MISS ALIYA</span></div></div>
 
         <!-- MESSENGER -->
-        <div class="stylish-card" data-url="https://mltibot-2.onrender.com"><div class="card-icon">💬</div><div class="card-name">MΛSSΞNGΞR CHΛT BOT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://mltibot-2.onrender.com"><div class="card-num">#MB01</div><div class="card-name">MΛSSΞNGΞR CHΛT BOT</div><div class="made">made by <span>MISS ALIYA</span></div></div>
 
         <!-- INSTA 3 -->
-        <div class="stylish-card" data-url="https://insta-server2-duc5.onrender.com"><div class="card-icon">📸</div><div class="card-name">INSTA SERVER I</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="stylish-card" data-url="https://insta-inbox.onrender.com"><div class="card-icon">📥</div><div class="card-name">INSTA INBOX</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="stylish-card" data-url="https://offline-instapost-server-0mi3.onrender.com/"><div class="card-icon">⚡</div><div class="card-name">OFFLINE INSTAPOST</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://insta-server2-duc5.onrender.com"><div class="card-num">#INS1</div><div class="card-name">INSTA SERVER I</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://insta-inbox.onrender.com"><div class="card-num">#INS2</div><div class="card-name">INSTA INBOX</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://offline-instapost-server-0mi3.onrender.com/"><div class="card-num">#INS3</div><div class="card-name">OFFLINE INSTAPOST</div><div class="made">made by <span>MISS ALIYA</span></div></div>
 
         <!-- TOKEN 2 -->
-        <div class="stylish-card" data-url="https://convo-token-server-5.onrender.com/"><div class="card-icon">🔑</div><div class="card-name">T0KΞN SΞRVΞR V</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="stylish-card" data-url="https://convo-3-mfud.onrender.com/"><div class="card-icon">🔐</div><div class="card-name">C0NV0 T0KΞN |||</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://convo-token-server-5.onrender.com/"><div class="card-num">#TKN1</div><div class="card-name">T0KΞN SΞRVΞR V</div><div class="made">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://convo-3-mfud.onrender.com/"><div class="card-num">#TKN2</div><div class="card-name">C0NV0 T0KΞN |||</div><div class="made">made by <span>MISS ALIYA</span></div></div>
 
         <!-- COVER DP -->
-        <div class="stylish-card" data-url="https://coverdp-2.onrender.com/"><div class="card-icon">🖼️</div><div class="card-name">C0VΞR DP STUDIO</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://coverdp-2.onrender.com/"><div class="card-num">#CDP1</div><div class="card-name">C0VΞR DP STUDIO</div><div class="made">made by <span>MISS ALIYA</span></div></div>
 
         <!-- APK -->
-        <div class="stylish-card" data-url="https://apk-k18z.onrender.com/"><div class="card-icon">📦</div><div class="card-name">PRΞMIUM APK VAULT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://apk-k18z.onrender.com/"><div class="card-num">#APKX</div><div class="card-name">PRΞMIUM APK VAULT</div><div class="made">made by <span>MISS ALIYA</span></div></div>
 
         <!-- RDX TOOLS -->
-        <div class="stylish-card" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders"><div class="card-icon">🛠️</div><div class="card-name">RDX T00LKIT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="card" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders"><div class="card-num">#RDX0</div><div class="card-name">RDX T00LKIT</div><div class="made">made by <span>MISS ALIYA</span></div></div>
     </div>
 
-    <div class="footer-section">
-        <div class="end-line">⚡ END TO END CONVO VERY SOON ⚡</div>
-        <div class="very-soon">✦ very soon ✦</div>
-        <div style="margin-top:15px; font-size:0.7rem; opacity:0.7;">MISS ALIYA // ALL SYSTEMS ACTIVE</div>
+    <div class="footer">
+        <div class="end">⚡ END TO END CONVO VERY SOON ⚡</div>
+        <div class="soon">✦ very soon ✦</div>
+        <div style="margin-top:12px; font-size:0.7rem;">MISS ALIYA // ALL SYSTEMS ACTIVE</div>
     </div>
 </div>
 
 <script>
-    const splash = document.getElementById('splashScreen');
+    const splash = document.getElementById('splash');
     const dashboard = document.getElementById('dashboard');
     const welcomeBtn = document.getElementById('welcomeBtn');
 
-    welcomeBtn.addEventListener('click', () => {
+    welcomeBtn.onclick = () => {
         splash.classList.add('hide');
         dashboard.classList.add('show');
         setTimeout(() => {
             splash.style.display = 'none';
-        }, 600);
-    });
+        }, 500);
+    };
 
-    document.querySelectorAll('.stylish-card').forEach(card => {
-        card.addEventListener('click', () => {
+    document.querySelectorAll('.card').forEach(card => {
+        card.onclick = () => {
             const url = card.getAttribute('data-url');
             if(url) window.open(url, '_blank');
-        });
+        };
     });
 </script>
 </body>
