@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>MISS ALIYA ✦ LEGENDARY ENTRY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>MISS ALIYA ✦ ENTRY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,11 +16,11 @@
         body {
             min-height: 100vh;
             background: radial-gradient(ellipse at 30% 40%, #0a0c1a, #010105);
-            font-family: 'Poppins', 'Orbitron', monospace;
+            font-family: 'Poppins', 'Orbitron', sans-serif;
             overflow-x: hidden;
         }
 
-        /* animated cyber grid background */
+        /* animated background */
         body::before {
             content: "";
             position: fixed;
@@ -28,30 +28,18 @@
             height: 200%;
             top: -50%;
             left: -50%;
-            background: repeating-linear-gradient(0deg, rgba(0,255,255,0.05) 0px, rgba(0,255,255,0.05) 1px, transparent 1px, transparent 12px),
-                        repeating-linear-gradient(90deg, rgba(255,0,255,0.05) 0px, rgba(255,0,255,0.05) 1px, transparent 1px, transparent 12px);
-            animation: drift 30s linear infinite;
+            background: repeating-linear-gradient(0deg, rgba(0,255,255,0.04) 0px, rgba(0,255,255,0.04) 1px, transparent 1px, transparent 10px),
+                        repeating-linear-gradient(90deg, rgba(255,0,255,0.04) 0px, rgba(255,0,255,0.04) 1px, transparent 1px, transparent 10px);
+            animation: drift 25s linear infinite;
             pointer-events: none;
             z-index: 0;
         }
         @keyframes drift {
             0% { transform: rotate(0deg) translate(0,0); }
-            100% { transform: rotate(360deg) translate(20px,20px); }
+            100% { transform: rotate(360deg) translate(30px,30px); }
         }
 
-        /* scanline effect */
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.02) 0px, rgba(0,255,0,0.02) 2px, transparent 2px, transparent 8px);
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        /* ========= PAGE 1 : SPLASH SCREEN ========= */
+        /* ========= PAGE 1 : SPLASH (pehle wala style) ========= */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -63,64 +51,56 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            backdrop-filter: blur(0px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .splash-screen.hide {
             opacity: 0;
             visibility: hidden;
-            backdrop-filter: blur(20px);
-            transform: scale(0.95);
+            transform: scale(0.96);
         }
         .splash-container {
-            position: relative;
-            z-index: 10;
             width: 90%;
-            max-width: 550px;
+            max-width: 520px;
             text-align: center;
-            animation: fadeInUp 0.8s ease;
+            animation: fadeUp 0.7s ease;
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* image frame */
+        /* image frame - pehle jaisa glassmorphism */
         .img-frame {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(18px);
-            border-radius: 68px;
-            padding: 15px;
-            border: 1px solid rgba(255,100,200,0.5);
-            box-shadow: 0 0 40px rgba(255,0,150,0.3);
-            margin-bottom: 35px;
-            transition: 0.4s;
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(16px);
+            border-radius: 60px;
+            padding: 14px;
+            border: 1px solid rgba(255,120,200,0.5);
+            box-shadow: 0 0 35px rgba(255,50,150,0.3);
+            margin-bottom: 30px;
+            transition: 0.3s;
         }
         .img-frame:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 60px rgba(255,0,200,0.6);
-            border-color: #ff66ff;
+            transform: scale(1.01);
+            box-shadow: 0 0 55px rgba(255,80,180,0.5);
         }
         .img-frame img {
             width: 100%;
-            border-radius: 54px;
+            border-radius: 48px;
             display: block;
-            box-shadow: 0 8px 28px black;
         }
 
-        /* MISS ALIYA fancy name */
         .fancy-name {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 900;
             font-family: 'Orbitron', monospace;
-            background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #FFD1FF, #C084FC);
+            background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #C084FC);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             animation: gradientFlow 3s ease infinite;
-            text-shadow: 0 0 30px rgba(255,105,180,0.6);
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             margin: 20px 0 10px;
         }
         @keyframes gradientFlow {
@@ -130,12 +110,12 @@
         }
 
         .welcome-btn {
-            margin-top: 35px;
+            margin-top: 30px;
             background: linear-gradient(95deg, #ff3388, #ffcc33);
             border: none;
-            padding: 16px 42px;
-            border-radius: 60px;
-            font-size: 1.5rem;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-size: 1.4rem;
             font-weight: bold;
             font-family: 'Orbitron';
             color: #0a0c1a;
@@ -145,37 +125,34 @@
             letter-spacing: 2px;
         }
         .welcome-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px #ff44cc;
-            background: linear-gradient(95deg, #ff44aa, #ffe066);
+            transform: scale(1.03);
+            box-shadow: 0 0 30px #ff44cc;
         }
+
         .press-text {
             margin-top: 18px;
-            font-size: 0.85rem;
-            color: #92ffd0;
+            font-size: 0.8rem;
+            color: #aaffdd;
             font-family: monospace;
-            animation: blinkSoft 1.2s infinite;
-            background: rgba(0,0,0,0.5);
+            animation: blink 1.2s infinite;
+            background: rgba(0,0,0,0.4);
             display: inline-block;
-            padding: 6px 20px;
+            padding: 5px 18px;
             border-radius: 30px;
-            backdrop-filter: blur(5px);
         }
-        @keyframes blinkSoft {
+        @keyframes blink {
             0%,100% { opacity: 0.7; letter-spacing: 1px; }
             50% { opacity: 1; letter-spacing: 3px; text-shadow: 0 0 5px cyan; }
         }
 
-        /* ========= PAGE 2 : DASHBOARD ========= */
+        /* ========= PAGE 2 : DASHBOARD (pehle wala amazing style) ========= */
         .dashboard {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
-            position: relative;
-            z-index: 5;
-            padding: 20px;
+            padding: 25px 20px;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease 0.2s;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.2s;
             pointer-events: none;
         }
         .dashboard.show {
@@ -184,170 +161,174 @@
             pointer-events: auto;
         }
 
-        .unix-header {
-            background: rgba(0, 20, 20, 0.65);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 20px 30px;
+        /* header */
+        .hero {
             text-align: center;
-            margin-bottom: 45px;
-            border: 1px solid #00ffc3;
-            box-shadow: 0 0 18px cyan;
+            margin-bottom: 50px;
         }
-        .glitch-text {
-            font-size: 3rem;
+        .dash-name {
+            font-size: 3.8rem;
             font-weight: 900;
             font-family: 'Orbitron';
-            color: #0ff;
-            text-shadow: -2px -2px 0 #ff00cc, 2px 2px 0 #00ffcc;
-            animation: glitchDash 0.7s infinite;
+            background: linear-gradient(135deg, #FFD6FF, #FF9A9E, #FAD0C4, #FFD1FF);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientFlow 3s ease infinite;
+            letter-spacing: 3px;
         }
-        @keyframes glitchDash {
-            0% { text-shadow: -1px -1px 0 #ff00cc, 1px 1px 0 #00ffcc; }
-            25% { text-shadow: -2px 1px 0 #ff00cc, 1px -1px 0 #00ffcc; }
-            50% { text-shadow: 1px -2px 0 #ff00cc, -1px 2px 0 #00ffcc; }
-            75% { text-shadow: 0px 2px 0 #ff00cc, 2px 0px 0 #00ffcc; }
+        .glow-line {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0066, #ffcc00);
+            margin: 15px auto;
+            border-radius: 10px;
         }
 
+        /* cards grid */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
+            gap: 25px;
+            margin: 40px 0;
         }
 
-        .unix-card {
-            background: rgba(12, 22, 35, 0.8);
-            backdrop-filter: blur(12px);
-            border-radius: 28px;
-            padding: 22px 18px;
+        /* stylish card - pehle wala hi but upgraded */
+        .stylish-card {
+            background: rgba(10, 20, 35, 0.6);
+            backdrop-filter: blur(14px);
+            border-radius: 32px;
+            padding: 25px 18px 18px 18px;
             text-align: center;
             cursor: pointer;
-            border-left: 6px solid #ff44ee;
-            border-bottom: 2px solid #33ffcc;
-            transition: 0.2s linear;
-            font-family: 'Share Tech Mono', monospace;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 25px -8px black;
         }
-        .unix-card:hover {
-            transform: translateY(-6px);
-            background: #0a142ecc;
-            border-left-color: #ffaa33;
-            box-shadow: 0 0 28px #ff66cc80;
+        .stylish-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff66c4;
+            box-shadow: 0 0 30px rgba(255,102,196,0.4);
+            background: rgba(20, 30, 55, 0.75);
         }
 
-        .card-code {
-            font-size: 1rem;
-            background: #00000066;
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 30px;
-            color: #0f0;
-            font-weight: bold;
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
         }
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 14px 0;
-            background: linear-gradient(145deg, #fff, #aaf);
+        .card-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 10px 0;
+            background: linear-gradient(120deg, #fff, #ffccdd);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .made-by {
-            margin: 18px 0 8px;
+            margin-top: 18px;
             font-size: 0.7rem;
-            color: #ffb3ba;
-            border-top: 1px dashed cyan;
+            color: #ffb7c5;
+            border-top: 1px dashed rgba(255,100,150,0.4);
             padding-top: 12px;
         }
-        .made-by span { color: #ff88cc; font-weight: bold; }
+        .made-by span {
+            color: #ff88cc;
+            font-weight: bold;
+        }
 
-        .unix-footer {
-            margin-top: 55px;
-            background: #03070faa;
-            padding: 30px;
-            border-radius: 40px;
+        /* footer */
+        .footer-section {
             text-align: center;
-            font-family: monospace;
+            margin-top: 55px;
+            padding: 25px;
+            background: rgba(0,0,0,0.35);
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
         }
         .end-line {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #aaffdd;
+            color: #ffdd99;
+            letter-spacing: 2px;
         }
-        .soon {
+        .very-soon {
             font-size: 1rem;
-            margin-top: 12px;
-            color: #ffaa66;
-            animation: pulseSoon 1s infinite;
+            margin-top: 10px;
+            color: #88ffdd;
+            animation: pulseText 1.2s infinite;
         }
-        @keyframes pulseSoon { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+        @keyframes pulseText {
+            0%,100% { opacity: 0.7; }
+            50% { opacity: 1; text-shadow: 0 0 5px cyan; }
+        }
 
-        @media (max-width: 700px) {
-            .fancy-name { font-size: 2.2rem; letter-spacing: 2px; }
-            .welcome-btn { font-size: 1.1rem; padding: 12px 28px; }
-            .glitch-text { font-size: 1.8rem; }
-            .card-title { font-size: 1.1rem; }
+        @media (max-width: 600px) {
+            .fancy-name { font-size: 2rem; }
+            .dash-name { font-size: 2rem; }
+            .card-name { font-size: 1.1rem; }
+            .end-line { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- PAGE 1: SPLASH SCREEN -->
+<!-- SPLASH SCREEN -->
 <div class="splash-screen" id="splashScreen">
     <div class="splash-container">
         <div class="img-frame">
-            <img src="https://i.ibb.co/938v5npv/fba428b57ab944eaa0014d96b3da238d-1.jpg" alt="MISS ALIYA" onerror="this.src='https://via.placeholder.com/500x500?text=MISS+ALIYA'">
+            <img src="https://i.ibb.co/938v5npv/fba428b57ab944eaa0014d96b3da238d-1.jpg" alt="MISS ALIYA">
         </div>
         <div class="fancy-name">⚜️ MISS ALIYA ⚜️</div>
         <button class="welcome-btn" id="welcomeBtn">WELCOME</button>
-        <div class="press-text">⟡ PRESS THIS ⟡  ||  [ENTER DASHBOARD]</div>
+        <div class="press-text">⟡ PRESS THIS ⟡</div>
     </div>
 </div>
 
-<!-- PAGE 2: DASHBOARD (hidden initially) -->
+<!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
-    <div class="unix-header">
-        <div class="glitch-text">⚡ MISS ALIYA :: TERMINAL_MODE ⚡</div>
-        <div style="color:#2effb0; font-size:0.7rem;">$ WELCOME TO THE MASTER DASHBOARD // ACCESS GRANTED</div>
+    <div class="hero">
+        <div class="dash-name">⚜️ MISS ALIYA ⚜️</div>
+        <div class="glow-line"></div>
+        <div style="color:#99ffdd; font-size:0.8rem; letter-spacing:2px;">✦ MASTER CONTROL ✦</div>
     </div>
 
     <div class="cards-grid">
-        <!-- COOKIES 4 cards -->
-        <div class="unix-card" data-url="https://cookis-convo-aliya.onrender.com/"><div class="card-code">[SRV-01]</div><div class="card-title">C9KIC C9NVO ①</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="unix-card" data-url="https://cookies-convo-3.onrender.com/"><div class="card-code">[SRV-02]</div><div class="card-title">C9KIC C9NVO ②</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="unix-card" data-url="https://cookies-convo-4.onrender.com/"><div class="card-code">[SRV-03]</div><div class="card-title">C9KIC C9NVO ③</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="unix-card" data-url="https://cokkis-convo-5.onrender.com/"><div class="card-code">[SRV-04]</div><div class="card-title">C9KIC C9NVO ④</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <!-- COOKIES 4 -->
+        <div class="stylish-card" data-url="https://cookis-convo-aliya.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ①</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://cookies-convo-3.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ②</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://cookies-convo-4.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ③</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://cokkis-convo-5.onrender.com/"><div class="card-icon">🍪</div><div class="card-name">C9KIC C9NVO ④</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
 
-        <!-- MESSENGER BOT -->
-        <div class="unix-card" data-url="https://mltibot-2.onrender.com"><div class="card-code">[BOT]</div><div class="card-title">MΛSSΞNGΞR CHΛT BOT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <!-- MESSENGER -->
+        <div class="stylish-card" data-url="https://mltibot-2.onrender.com"><div class="card-icon">💬</div><div class="card-name">MΛSSΞNGΞR CHΛT BOT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
 
         <!-- INSTA 3 -->
-        <div class="unix-card" data-url="https://insta-server2-duc5.onrender.com"><div class="card-code">[INSTA-1]</div><div class="card-title">INSTA SERVER I</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="unix-card" data-url="https://insta-inbox.onrender.com"><div class="card-code">[INSTA-2]</div><div class="card-title">INSTA INBOX</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="unix-card" data-url="https://offline-instapost-server-0mi3.onrender.com/"><div class="card-code">[INSTA-3]</div><div class="card-title">OFFLINE INSTAPOST</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://insta-server2-duc5.onrender.com"><div class="card-icon">📸</div><div class="card-name">INSTA SERVER I</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://insta-inbox.onrender.com"><div class="card-icon">📥</div><div class="card-name">INSTA INBOX</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://offline-instapost-server-0mi3.onrender.com/"><div class="card-icon">⚡</div><div class="card-name">OFFLINE INSTAPOST</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
 
         <!-- TOKEN 2 -->
-        <div class="unix-card" data-url="https://convo-token-server-5.onrender.com/"><div class="card-code">[TKN-α]</div><div class="card-title">T0KΞN SΞRVΞR V</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
-        <div class="unix-card" data-url="https://convo-3-mfud.onrender.com/"><div class="card-code">[TKN-β]</div><div class="card-title">C0NV0 T0KΞN |||</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://convo-token-server-5.onrender.com/"><div class="card-icon">🔑</div><div class="card-name">T0KΞN SΞRVΞR V</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://convo-3-mfud.onrender.com/"><div class="card-icon">🔐</div><div class="card-name">C0NV0 T0KΞN |||</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
 
         <!-- COVER DP -->
-        <div class="unix-card" data-url="https://coverdp-2.onrender.com/"><div class="card-code">[COVER]</div><div class="card-title">C0VΞR DP STUDIO</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://coverdp-2.onrender.com/"><div class="card-icon">🖼️</div><div class="card-name">C0VΞR DP STUDIO</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
 
         <!-- APK -->
-        <div class="unix-card" data-url="https://apk-k18z.onrender.com/"><div class="card-code">[APK]</div><div class="card-title">PRΞMIUM APK VAULT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://apk-k18z.onrender.com/"><div class="card-icon">📦</div><div class="card-name">PRΞMIUM APK VAULT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
 
         <!-- RDX TOOLS -->
-        <div class="unix-card" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders"><div class="card-code">[RDX]</div><div class="card-title">RDX T00LKIT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
+        <div class="stylish-card" data-url="https://rdx-toolskit-org-3.onrender.com/#downloaders"><div class="card-icon">🛠️</div><div class="card-name">RDX T00LKIT</div><div class="made-by">made by <span>MISS ALIYA</span></div></div>
     </div>
 
-    <div class="unix-footer">
+    <div class="footer-section">
         <div class="end-line">⚡ END TO END CONVO VERY SOON ⚡</div>
-        <div class="soon">✦ very soon ✦</div>
-        <div style="margin-top:20px; font-size:0.7rem;">MISS ALIYA // ALL SYSTEMS ACTIVE</div>
+        <div class="very-soon">✦ very soon ✦</div>
+        <div style="margin-top:15px; font-size:0.7rem; opacity:0.7;">MISS ALIYA // ALL SYSTEMS ACTIVE</div>
     </div>
 </div>
-
-<div class="scanline"></div>
 
 <script>
     const splash = document.getElementById('splashScreen');
@@ -357,15 +338,12 @@
     welcomeBtn.addEventListener('click', () => {
         splash.classList.add('hide');
         dashboard.classList.add('show');
-        
-        // optional: play subtle sound vibe (no actual sound, just class)
         setTimeout(() => {
             splash.style.display = 'none';
-        }, 800);
+        }, 600);
     });
 
-    // Card click handlers for dashboard
-    document.querySelectorAll('.unix-card').forEach(card => {
+    document.querySelectorAll('.stylish-card').forEach(card => {
         card.addEventListener('click', () => {
             const url = card.getAttribute('data-url');
             if(url) window.open(url, '_blank');
