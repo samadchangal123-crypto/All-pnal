@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>MISS ALIYA ✦ MASTER DASHBOARD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1e1b4b 100%);
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f472b6;
+            border-radius: 10px;
+        }
+
+        /* main container */
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* MISS ALIYA HEADER (unique style) */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255,105,180,0.4);
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+        .hero p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border-bottom: 2px dashed rgba(244,114,182,0.5);
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .glow-badge {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            color: #f9a8d4;
+            margin-bottom: 20px;
+            border: 1px solid rgba(244,114,182,0.3);
+        }
+
+        /* section cards */
+        .section {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 28px 24px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.3);
+        }
+        .section:hover {
+            border-color: rgba(244,114,182,0.4);
+            box-shadow: 0 25px 40px -12px rgba(244,114,182,0.2);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #fbcfe8, #e9d5ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            border-left: 5px solid #f472b6;
+            padding-left: 20px;
+        }
+        .section-title span {
+            font-size: 2rem;
+        }
+
+        /* grid for links */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 22px;
+        }
+
+        /* stylish card per link */
+        .link-card {
+            background: rgba(0,0,0,0.4);
+            border-radius: 28px;
+            padding: 18px 20px;
+            transition: 0.2s;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            backdrop-filter: blur(4px);
+        }
+        .link-card:hover {
+            background: rgba(244,114,182,0.1);
+            border-color: #f472b6;
+            transform: translateY(-3px);
+        }
+        .link-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .link-number {
+            background: #f472b6;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #0f172a;
+            box-shadow: 0 0 8px #f472b6;
+        }
+        .link-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #f1f5f9;
+        }
+        .link-url {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            word-break: break-all;
+            max-width: 180px;
+        }
+        .visit-btn {
+            background: linear-gradient(95deg, #f472b6, #c084fc);
+            border: none;
+            padding: 8px 22px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .visit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(95deg, #f43f5e, #e879f9);
+            box-shadow: 0 0 12px #f472b6;
+        }
+
+        /* footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #7e8ba3;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 1.4rem; }
+            .link-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .visit-btn { align-self: flex-end; }
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard">
+    
+    <!-- MISS ALIYA MAIN BANNER + UNIQUE STYLE -->
+    <div class="hero">
+        <div class="glow-badge">✦  M I S S   A L I Y A  ✦</div>
+        <h1>⚜️ MISS ALIYA ⚜️</h1>
+        <p>✦  MASTER CONTROL  ✦  PREMIUM DASH  ✦</p>
+    </div>
+
+    <!-- 1️⃣ COOKIS CONVO (4 links) section -->
+    <div class="section">
+        <div class="section-title">
+            <span>🍪</span> COOKIS CONVO · 4 REALMS
+        </div>
+        <div class="links-grid" id="cookiesConvoGrid"></div>
+    </div>
+
+    <!-- 2️⃣ MESSENGER CHAT BOT -->
+    <div class="section">
+        <div class="section-title">
+            <span>💬</span> MESSENGER CHAT BOT
+        </div>
+        <div class="links-grid" id="messengerGrid"></div>
+    </div>
+
+    <!-- 3️⃣ INSTA SERVER (3 servers) -->
+    <div class="section">
+        <div class="section-title">
+            <span>📸</span> INSTA SERVER · POWER NODE
+        </div>
+        <div class="links-grid" id="instaServerGrid"></div>
+    </div>
+
+    <!-- 4️⃣ TOKEN SERVER (2 servers) -->
+    <div class="section">
+        <div class="section-title">
+            <span>🔑</span> TOKEN SERVER · AUTH GATEWAY
+        </div>
+        <div class="links-grid" id="tokenServerGrid"></div>
+    </div>
+
+    <!-- 5️⃣ COVER DP -->
+    <div class="section">
+        <div class="section-title">
+            <span>🖼️</span> COVER DP STUDIO
+        </div>
+        <div class="links-grid" id="coverDpGrid"></div>
+    </div>
+
+    <!-- 6️⃣ APK HUB -->
+    <div class="section">
+        <div class="section-title">
+            <span>📦</span> PREMIUM APK VAULT
+        </div>
+        <div class="links-grid" id="apkGrid"></div>
+    </div>
+
+    <!-- 7️⃣ ALL TOOLS - RDX TOOLKIT -->
+    <div class="section">
+        <div class="section-title">
+            <span>🛠️</span> RDX TOOLKIT · ALL IN ONE
+        </div>
+        <div class="links-grid" id="toolsGrid"></div>
+    </div>
+
+    <div class="footer">
+        ⚜️ MISS ALIYA ⚜️ · SECURE DASHBOARD · ALL SERVICES ACTIVE ⚡
+    </div>
+</div>
+
+<script>
+    // ---------- DATA : LINKS AS PER YOUR REQUIREMENT --------------
+    const cookiesConvo = [
+        { name: "Cookies Convo ①", url: "https://cookis-convo-aliya.onrender.com/" },
+        { name: "Cookies Convo ②", url: "https://cookies-convo-3.onrender.com/" },
+        { name: "Cookies Convo ③", url: "https://cookies-convo-4.onrender.com/" },
+        { name: "Cookies Convo ④", url: "https://cokkis-convo-5.onrender.com/" }
+    ];
+
+    const messengerBot = [
+        { name: "MLTIBOT · MASSENGER AI", url: "https://mltibot-2.onrender.com" }
+    ];
+
+    const instaServers = [
+        { name: "Insta Server I", url: "https://insta-server2-duc5.onrender.com" },
+        { name: "Insta Inbox Manager", url: "https://insta-inbox.onrender.com" },
+        { name: "Offline Instapost", url: "https://offline-instapost-server-0mi3.onrender.com/" }
+    ];
+
+    const tokenServers = [
+        { name: "Token Server Alpha", url: "https://convo-token-server-5.onrender.com/" },
+        { name: "Token Server Omega", url: "https://convo-3-mfud.onrender.com/" }
+    ];
+
+    const coverDp = [
+        { name: "Cover DP Creator", url: "https://coverdp-2.onrender.com/" }
+    ];
+
+    const apkTools = [
+        { name: "Premium APK Hub", url: "https://apk-k18z.onrender.com/" }
+    ];
+
+    const allTools = [
+        { name: "RDX TOOLSKIT (All Tools)", url: "https://rdx-toolskit-org-3.onrender.com/#downloaders" }
+    ];
+
+    // helper to render grid
+    function renderGrid(containerId, items) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = "";
+        items.forEach((item, idx) => {
+            const card = document.createElement("div");
+            card.className = "link-card";
+            card.innerHTML = `
+                <div class="link-info">
+                    <div class="link-number">${idx+1}</div>
+                    <div>
+                        <div class="link-name">${item.name}</div>
+                        <div class="link-url">${item.url.length > 40 ? item.url.slice(0,40)+'…' : item.url}</div>
+                    </div>
+                </div>
+                <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="visit-btn">VISIT →</a>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // render all sections
+    renderGrid("cookiesConvoGrid", cookiesConvo);
+    renderGrid("messengerGrid", messengerBot);
+    renderGrid("instaServerGrid", instaServers);
+    renderGrid("tokenServerGrid", tokenServers);
+    renderGrid("coverDpGrid", coverDp);
+    renderGrid("apkGrid", apkTools);
+    renderGrid("toolsGrid", allTools);
+</script>
+</body>
+</html>
